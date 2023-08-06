@@ -27,13 +27,13 @@ namespace EventBus.Base.Events
 
         public virtual string ProcessEventName(string eventName)
         {
-            if (eventBusConfig.DeleteEventPrefix)
+            if (EventBusConfig.DeleteEventPrefix)
             {
-                eventName = eventName.TrimStart(eventBusConfig.EventNamePrefix.ToArray());
+                eventName = eventName.TrimStart(EventBusConfig.EventNamePrefix.ToArray());
             }
-            if (eventBusConfig.DeleteEventSuffix)
+            if (EventBusConfig.DeleteEventSuffix)
             {
-                eventName = eventName.TrimEnd(eventBusConfig.EventNameSuffix.ToArray());
+                eventName = eventName.TrimEnd(EventBusConfig.EventNameSuffix.ToArray());
             }
 
             return eventName;
@@ -41,7 +41,7 @@ namespace EventBus.Base.Events
 
         public virtual string GetSubName(string eventName)
         {
-            return $"{eventBusConfig.SubscriberClientAppName}.{ProcessEventName(eventName)}";
+            return $"{EventBusConfig.SubscriberClientAppName}.{ProcessEventName(eventName)}";
         }
 
         public virtual void Dispose()

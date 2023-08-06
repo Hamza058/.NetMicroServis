@@ -130,7 +130,7 @@ namespace EventBus.RabbitMQ
 
         public override void UnSubscribe<T, TH>()
         {
-            throw new NotImplementedException();
+            SubsManager.RemoveSubscription<T, TH>();
         }
 
         public IModel CreateConsumerChannle()
