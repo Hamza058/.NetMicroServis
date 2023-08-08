@@ -6,19 +6,19 @@ using System.Security.Authentication;
 
 namespace CatalogService.Api.Infrastructure.EntityConfigurations
 {
-    public class CatalogTypeEntityTypeConfiguration : IEntityTypeConfiguration<CatalogBrand>
+    public class CatalogTypeEntityTypeConfiguration : IEntityTypeConfiguration<CatalogType>
     {
-        public void Configure(EntityTypeBuilder<CatalogBrand> builder)
+        public void Configure(EntityTypeBuilder<CatalogType> builder)
         {
-            builder.ToTable("CatalogBrand", CatalogContext.DEFAULT_SCHEMA);
+            builder.ToTable("CatalogType", CatalogContext.DEFAULT_SCHEMA);
 
             builder.HasKey(ci => ci.Id);
 
             builder.Property(ci => ci.Id)
-                .UseHiLo("catalog_brand_hilo")
+                .UseHiLo("catalog_type_hilo")
                 .IsRequired();
 
-            builder.Property(cb => cb.Brand)
+            builder.Property(cb => cb.Type)
                 .IsRequired()
                 .HasMaxLength(100);
         }
